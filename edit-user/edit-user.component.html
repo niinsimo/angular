@@ -1,0 +1,56 @@
+<div *ngIf="user" class="right-content">
+  <mat-toolbar-row>
+    <h1 class="mat-h1" style="margin: 0px;">Muuda kasutajat</h1>
+  </mat-toolbar-row>
+  <div class="form-wrapper">
+    <mat-card>
+      <mat-card-content style="min-height: 400px" class="add-content">
+        <div class="error-container" *ngIf="errors.length > 0">
+          <div *ngFor="let error of errors" style="color: white;margin-bottom: 10px;">
+            <i class="material-icons" style="padding-right: 10px;vertical-align: bottom;">warning</i>
+            <span>{{error}}</span>
+          </div>
+        </div>
+        <form>
+          <mat-form-field class="full-width">
+            <input matInput name="firstName" [(ngModel)]="user.person.firstName" value="{{user.person.firstName}}" placeholder="Eesnimi">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput name="lastName" [(ngModel)]="user.person.lastName" value="{{user.person.lastName}}" placeholder="Perenimi">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput name="phone" [(ngModel)]="user.person.phone" value="{{user.person.phone}}" placeholder="Telefon">
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput name="username" [(ngModel)]="user.username" value="{{user.username}}" placeholder="Kasutajanimi">
+          </mat-form-field>
+          <mat-form-field class="full-width" ng-app="myApp" ng-controller="myCtrl">
+            <input matInput name="password" [(ngModel)]="user.password" value="{{user.password}}" placeholder="Parool">
+          </mat-form-field>
+          <div style="width: 100%; padding-bottom: 15px">
+            <button mat-raised-button color="default" (click)="randomPassword(6)">Genereeri</button>
+          </div>
+          <input type="radio" value="Kuller" name="courier" [(ngModel)]="user.role" class="checkbox">Kuller
+          <input type="radio" value="Tehnik" name="technician" [(ngModel)]="user.role">Tehnik <br><br>
+          <mat-slide-toggle name="enabled" *ngIf="user.enabled" class="mat-slide-toggle mat-accent" [checked]="true" [(ngModel)]="user.enabled">
+            <label
+              class="mat-slide-toggle-label">
+              <span class="mat-slide-toggle-content">Aktiivne</span></label></mat-slide-toggle>
+          <mat-slide-toggle name="enabled" *ngIf="!user.enabled" class="mat-slide-toggle mat-accent" [checked]="false"  [(ngModel)]="user.enabled">
+            <label
+              class="mat-slide-toggle-label">
+              <span class="mat-slide-toggle-content">Mitte aktiivne</span></label></mat-slide-toggle>
+        </form>
+      </mat-card-content>
+      <mat-card-footer style="min-height: 50px; margin-right: 10px">
+        <button style="width: 20%; float:right; display:block;" color="primary" mat-raised-button (click)="editUser()" routerLink="../">
+          Lisa
+        </button>
+        <button style="width: 20%; float:right; display:block; margin-right: 10px;" color="default" mat-raised-button
+                routerLink="/users">Tühista
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
+
