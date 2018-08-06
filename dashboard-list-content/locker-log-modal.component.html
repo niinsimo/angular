@@ -1,0 +1,7 @@
+<mat-card-title class="app-data-header" style="font-family: Roboto,Helvetica Neue,sans-serif;">Kamber nr {{data.lockerId}} logi
+</mat-card-title>
+<mat-card-content style="font-family: Roboto,Helvetica Neue,sans-serif;">
+  <p style="margin-top: 40px; font-size: 16px;" *ngFor="let logs of log">
+    <strong>{{logs.createdAt * 1000 | date:'dd.MM.yy HH:mm'}}</strong> Staatus > {{logs.status}} Haldur: {{ logs.comment}}
+  </p>
+</mat-card-content>
