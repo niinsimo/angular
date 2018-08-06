@@ -1,0 +1,18 @@
+<mat-card-title class="app-data-header" style="font-family: Roboto,Helvetica Neue,sans-serif;">Staatuse muutmine
+</mat-card-title><br><br>
+<form [formGroup]="form" (submit)="save()">
+  <mat-card-content style="font-family: Roboto,Helvetica Neue,sans-serif; margin-top: 20px;">
+    <mat-form-field style="margin-top: 20px; width: 100%;">
+      <mat-select placeholder="Uus staatus" formControlName="status">
+        <mat-option *ngFor="let status of statuses" [value]="status.key">
+          {{status.valueEt}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field style="width: 100%; margin-top: 20px;">
+      <textarea matInput placeholder="Kommentaar" formControlName="comment" ></textarea>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Lisa logi</button>
+  </mat-card-content>
+</form>
+
