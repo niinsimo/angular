@@ -1,0 +1,17 @@
+.delete{
+  float: right;
+  color:gray;
+  cursor: pointer;
+}
+.delete:hover{
+  color: black;
+}
+
+.error-container{
+  background-color: #ff6666;
+  padding: 10px;
+}
+
+.checkbox{
+  margin-right: 10px;
+}
