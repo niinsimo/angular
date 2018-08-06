@@ -1,0 +1,42 @@
+<mat-card-content fxFlex="100" class="app-content-card">
+  <table class="mat-table mat-row">
+    <thead>
+    <tr class="mat-header-row" style="border-bottom: 1px solid darkgray">
+      <th class="mat-header-cell">
+        <mat-checkbox></mat-checkbox>
+      </th>
+      <th class="mat-header-cell"> Kapp</th>
+      <th class="mat-header-cell"> Kamber</th>
+      <th class="mat-header-cell"> Komplekteerimispunkt</th>
+      <th class="mat-header-cell"> Veoring</th>
+      <th class="mat-header-cell"> Viga</th>
+      <th class="mat-header-cell"> Logi</th>
+      <th class="mat-header-cell"> Staatus</th>
+    </tr>
+    </thead>
+    <ng-template let-lockerLog ngFor [ngForOf]="lockerLogs">
+      <tr class="mat-row" >
+        <td class="mat-cell">
+          <mat-checkbox></mat-checkbox>
+        </td>
+        <td class="mat-cell">{{lockerLog.cabinetName}}</td>
+        <td class="mat-cell">{{lockerLog.index}}</td>
+        <td class="mat-cell">{{lockerLog.routeName}}</td>
+        <td class="mat-cell">{{lockerLog.storeName}}</td>
+        <td class="mat-cell">{{lockerLog.comment}}</td>
+        <td class="mat-cell">
+            <i class="material-icons" *ngIf="lockerLog.logCount > 0" (click)="openLog(lockerLog.id)" style="cursor:pointer; vertical-align: middle; margin-right: 5px;">chat_bubble_outline</i>
+            {{lockerLog.logCount}}
+        </td>
+        <td class="mat-cell" [ngStyle]="{'color': getStatusColor(lockerLog.status)}">
+          <i class="material-icons" style="vertical-align: middle;">fiber_manual_record</i>{{lockerLog.status}}
+            <i class="material-icons" (click)="editStatus(lockerLog.id)"
+               style="cursor:pointer; vertical-align: middle; color: #3f51b5;">edit</i>
+        </td>
+      </tr>
+    </ng-template>
+    <tr class="mat-row"></tr>
+  </table>
+</mat-card-content>
+
+
